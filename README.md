@@ -39,7 +39,7 @@ escolha será revisitada no Capítulo 4 (Criação e Versionamento de Prompts).
 
 | # | Framework | Provider | Modelo | Status |
 |---|---|---|---|---|
-| [01](questions/q01-placeholder.md) | — | — | — | pendente |
+| [01](questions/q01-docker-para-o-lift.md) | R-T-F | Anthropic | Claude Sonnet 5 | final |
 | [02](questions/q02-placeholder.md) | — | — | — | pendente |
 | [03](questions/q03-placeholder.md) | — | — | — | pendente |
 | [04](questions/q04-placeholder.md) | — | — | — | pendente |
