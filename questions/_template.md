@@ -36,7 +36,4 @@ resposta real do modelo — na íntegra ou trecho relevante
 2 a 4 linhas mostrando como os componentes do framework indicado aparecem no prompt.
 
 > Na Q08: comparar o framework escolhido com 2 alternativas do capítulo.
-
-## Notas (opcional)
-
-Se o output não ficou bom, o que seria feito diferente.
+> Se o output não ficou bom, comentar aqui o que seria feito diferente.

@@ -204,13 +204,3 @@ codes distintos por categoria de falha (10–32), exatamente como solicitado.
 script autônomo sem interação, pronto para agendamento, em vez de uma
 explicação em prosa.
 
-## Notas
-
-O script usa `aws s3 cp` só para o upload, mas a retenção/exclusão foi
-implementada via `aws s3api list-objects-v2` + `delete-object` em vez de
-`aws s3 cp` sozinho — mais granular, mas é uma pequena liberdade do modelo
-não pedida explicitamente. Também não busca a senha no Secrets Manager
-diretamente: espera `PGPASSWORD` já populada no ambiente do cron, o que é
-compatível com o enunciado (que já descreve isso como responsabilidade da
-IAM role/wrapper), mas vale confirmar esse ponto com a Lorraine antes do
-deploy.

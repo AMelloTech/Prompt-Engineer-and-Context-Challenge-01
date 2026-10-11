@@ -108,9 +108,3 @@ vars obrigatórias (`DATABASE_URL`, `API_KEY`), além do comando de produção
 literalmente no `CMD` final. **Format** ("Dockerfile") restringe a saída a
 um único artefato de código, sem explicações adicionais em torno.
 
-## Notas
-
-Nenhuma — output atendeu aos requisitos na primeira execução. Ponto de
-atenção: os valores de `DATABASE_URL`/`API_KEY` ficaram vazios de propósito
-no `ENV`, pois em produção (Kubernetes) devem vir de Secrets/ConfigMaps, não
-hardcoded na imagem.
