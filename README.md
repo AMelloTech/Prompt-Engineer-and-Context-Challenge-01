@@ -44,7 +44,7 @@ Versioning).
 | [02](questions/q02-backup-script-of-ledger.md) | R-T-F | OpenAI | GPT 6.0 Luna | final |
 | [03](questions/q03-report-of-cost-reduction-for-cloud.md) | T-A-G | Anthropic | Claude Opus 5 | final |
 | [04](questions/q04-monthly-report-of-ledger-transactions.md) | T-A-G | Anthropic | Claude Opus 5.5 | final |
-| [05](questions/q05-placeholder.md) | — | — | — | pending |
+| [05](questions/q05-legacy-deploy-modernization.md) | B-A-B | OpenAI | GPT 6 Luna | final |
 | [06](questions/q06-placeholder.md) | — | — | — | pending |
 | [07](questions/q07-placeholder.md) | — | — | — | pending |
 | [08](questions/q08-placeholder.md) | — (compared against 2 alternatives) | — | — | pending |
