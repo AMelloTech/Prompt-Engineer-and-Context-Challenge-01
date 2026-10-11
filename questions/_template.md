@@ -1,39 +1,40 @@
 ---
 question: 0
-title: "Título curto da demanda"
-framework: "NOME_DO_FRAMEWORK"
+title: "Short title of the demand"
+framework: "FRAMEWORK_NAME"
 provider: "OpenAI | Anthropic | Google | Meta | Local (Ollama)"
-model: "ex.: GPT-4o, Claude Sonnet 4, Gemini 2.5 Pro, Llama 3 (Ollama)"
+model: "e.g.: GPT-4o, Claude Sonnet 4, Gemini 2.5 Pro, Llama 3 (Ollama)"
 effort: "low | medium | high | n/a"
 status: "draft | final"
 ---
 
-## Cenário
+## Scenario
 
-Resumo de 1-2 linhas da demanda específica desta questão, dentro do contexto da
-Hill Valley Tech (ver [context/hill-valley-tech.md](../context/hill-valley-tech.md)).
+1-2 line summary of this question's specific demand, within the Hill Valley
+Tech context (see [context/hill-valley-tech.md](../context/hill-valley-tech.md)).
 
 ## Prompt
 
 ```
-texto exato usado, sem edição posterior
+exact text used, no later edits
 ```
 
-## Modelo
+## Model
 
-**Modelo usado:** nome do modelo
+**Model used:** model name
 
-**Por que esse modelo:** 1 linha justificando a escolha para esta tarefa.
+**Why this model:** 1 line justifying the choice for this task.
 
 ## Output
 
 ```
-resposta real do modelo — na íntegra ou trecho relevante
+the model's actual response — in full or the relevant excerpt
 ```
 
-## Justificativa
+## Rationale
 
-2 a 4 linhas mostrando como os componentes do framework indicado aparecem no prompt.
+2 to 4 lines showing how the specified framework's components appear in the
+prompt.
 
-> Na Q08: comparar o framework escolhido com 2 alternativas do capítulo.
-> Se o output não ficou bom, comentar aqui o que seria feito diferente.
+> For Q08: compare the chosen framework against 2 alternatives from the chapter.
+> If the output wasn't good, note here what would be done differently.

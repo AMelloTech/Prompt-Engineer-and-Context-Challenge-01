@@ -1,28 +1,30 @@
-# Hill Valley Tech — Contexto
+# Hill Valley Tech — Context
 
-Hill Valley Tech é uma empresa fictícia que serve de palco para este desafio. Tem cinco sistemas em produção, cada um com seu papel bem definido.
+Hill Valley Tech is a fictional company that serves as the backdrop for this
+challenge. It runs five systems in production, each with a clearly defined
+role.
 
-## Sistemas
+## Systems
 
-| Sistema | Papel |
+| System | Role |
 |---|---|
-| **Chronos** | API gateway e plataforma core — ponto de entrada de todo tráfego da empresa |
-| **Ledger** | Data warehouse em PostgreSQL — histórico de transações e eventos |
-| **Reactor** | Processamento assíncrono por filas de mensagens |
-| **Beacon** | Observabilidade do ambiente — métricas, logs e alertas; é por ele que o plantão enxerga o que está acontecendo |
-| **Lift** | Produto em beta, amadurecido à parte do core principal |
+| **Chronos** | API gateway and core platform — entry point for all of the company's traffic |
+| **Ledger** | Data warehouse in PostgreSQL — history of transactions and events |
+| **Reactor** | Asynchronous processing via message queues |
+| **Beacon** | Observability for the whole environment — metrics, logs, and alerts; it's how on-call sees what's happening |
+| **Lift** | Beta product, being matured separately from the core |
 
-## Time
+## Team
 
-| Pessoa | Papel |
+| Person | Role |
 |---|---|
-| **Doc Brown** | CTO — direção técnica |
-| **Jennifer Parker** | PM — prioriza o que o produto entrega |
-| **Lorraine Baines** | Lidera a SRE, responde pelo plantão; cobra runbooks e procedimentos documentados |
-| **George McFly** | Engenheiro sênior veterano — escreveu boa parte do sistema legado; muita coisa ainda roda como ele deixou |
-| **Goldie Wilson** | CEO — observa tudo pelo prisma de custo e crescimento |
-| **Strickland** | Head de segurança e compliance — aprova os padrões internos que todo código novo precisa seguir |
+| **Doc Brown** | CTO — technical direction |
+| **Jennifer Parker** | PM — prioritizes what the product ships |
+| **Lorraine Baines** | Leads SRE, owns on-call; pushes for documented runbooks and procedures |
+| **George McFly** | Veteran senior engineer — wrote much of the legacy system; a lot still runs exactly as he left it |
+| **Goldie Wilson** | CEO — watches everything through the lens of cost and growth |
+| **Strickland** | Head of security and compliance — approves the internal standards every new piece of code must follow |
 
-## Dados fictícios
+## Fictional data
 
-Os dados dos cenários são fictícios, sem necessidade de sanitização.
+Scenario data is fictional, so no sanitization is required.

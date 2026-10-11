@@ -8,11 +8,11 @@ effort: "medium"
 status: "final"
 ---
 
-## Cenário
+## Scenario
 
-O time percebeu que o PostgreSQL do Ledger, rodando em EC2 há anos, nunca
-teve uma rotina de backup. É preciso criar um cron job diário para cobrir
-essa lacuna (ver contexto geral em
+The team realized that Ledger's PostgreSQL, running on EC2 for years, never
+had a backup routine. A daily cron job needs to be created to close that
+gap (see the general context in
 [`context/hill-valley-tech.md`](../context/hill-valley-tech.md)).
 
 ## Prompt
@@ -20,56 +20,57 @@ essa lacuna (ver contexto geral em
 ```
 Role: You are a Staff SRE, with a background on databasa, aws and Linux. You always follow the best practices and security frameworks.
 Task: We have a PostgreSQL running on EC2 that has never been backup. The objetive is create a script that will do a dump with pg_dump, compact it with gzip, upload this file into the S3 bucket using aws s3 cp, keep it for 30 days of retention in S3, remove the one's older than 30 days and register in the /var/log/ledger-backup.log with the timestamp and have a good exit code in case of failures that help the team understands where to start looking and nothing generic. Enviroment information:Host: ledger-db.internal.hvt.io
-Porta: 5432
-Banco: ledger_prod
-Usuário de backup: backup_user
-Senha: variável de ambiente PGPASSWORD, populada pelo AWS Secrets Manager via IAM role da instância
-Região AWS: us-east-1
-SO da instância: Ubuntu 22.04 LTS
-Diretório de trabalho com 80 GB livres: /var/backups/ledger
-Tamanho médio atual do dump compactado: ~12 GB
+Port: 5432
+Database: ledger_prod
+Backup user: backup_user
+Password: PGPASSWORD environment variable, populated by AWS Secrets Manager via the instance's IAM role
+AWS Region: us-east-1
+Instance OS: Ubuntu 22.04 LTS
+Working directory with 80 GB free: /var/backups/ledger
+Current average compressed dump size: ~12 GB
 Format: bash script that will be run as a cron job
 ```
 
-## Modelo
+## Model
 
-**Modelo usado:** GPT 6.0 Luna (OpenAI), effort medium
+**Model used:** GPT 6.0 Luna (OpenAI), medium effort
 
-**Por que esse modelo:** segundo provider do desafio (diversificação exigida
-pelo enunciado); bom histórico em geração de scripts de infraestrutura com
-tratamento de erro explícito.
+**Why this model:** second provider for the challenge (diversification
+required by the assignment); good track record generating infrastructure
+scripts with explicit error handling.
 
 ## Output
 
-Resposta do modelo (resumo da execução + script gerado):
+Model's response (execution summary + generated script):
 
 ```
-Vou deixar um script pronto para cron, com configuração do bucket via variável
-obrigatória, log detalhado por etapa e códigos de saída distintos. Para
-retenção, vou limitar a exclusão ao prefixo configurado no S3; em produção,
-uma regra de Lifecycle no bucket é ainda mais robusta, mas também incluirei a
-limpeza solicitada no próprio script.
+I'll leave a cron-ready script, with the bucket configured via a required
+variable, detailed per-step logging, and distinct exit codes. For retention,
+I'll scope the deletion to the configured S3 prefix; in production, an S3
+Lifecycle rule would be even more robust, but I'll also include the
+requested cleanup in the script itself.
 
-Criei o script executável ledger-backup.sh. Ele gera um dump SQL comprimido,
-verifica o arquivo, envia para o S3 e remove backups com mais de 30 dias
-somente no prefixo configurado e com o padrão de nome esperado.
+I created the executable script ledger-backup.sh. It produces a compressed
+SQL dump, verifies the file, uploads it to S3, and removes backups older
+than 30 days, scoped only to the configured prefix and the expected naming
+pattern.
 
-Configure S3_BUCKET e PGPASSWORD no ambiente do cron; o script não busca o
-segredo no Secrets Manager. Execute-o como root para permitir escrita em
-/var/log/ledger-backup.log e uso de /var/backups/ledger. O usuário também
-precisa ter pg_dump, gzip, aws, jq e flock instalados.
+Set S3_BUCKET and PGPASSWORD in the cron environment; the script does not
+fetch the secret from Secrets Manager itself. Run it as root so it can write
+to /var/log/ledger-backup.log and use /var/backups/ledger. The user also
+needs pg_dump, gzip, aws, jq, and flock installed.
 
-Códigos de saída: 10 configuração; 11 dependências; 12 log, lock ou espaço;
-20 dump; 21 compressão/integridade; 30 upload; 31 listagem para retenção;
-32 exclusão no S3.
+Exit codes: 10 configuration; 11 dependencies; 12 log, lock, or disk space;
+20 dump; 21 compression/integrity; 30 upload; 31 retention listing;
+32 S3 deletion.
 
-O role da instância precisa de acesso para enviar, listar e excluir objetos
-no bucket/prefixo. Também recomendo configurar criptografia padrão e uma
-regra de Lifecycle no bucket como proteção adicional. O script foi criado,
-mas não executado neste ambiente.
+The instance role needs permission to put, list, and delete objects in the
+bucket/prefix. I'd also recommend enabling default encryption and an S3
+Lifecycle rule on the bucket as an additional safeguard. The script was
+created but not executed in this environment.
 ```
 
-Script gerado (`ledger-backup.sh`):
+Generated script (`ledger-backup.sh`):
 
 ```bash
 #!/usr/bin/env bash
@@ -190,17 +191,17 @@ log INFO "Backup job completed successfully. Expired objects deleted: $expired_c
 exit 0
 ```
 
-## Justificativa
+## Rationale
 
 **Role** ("Staff SRE... background on database, aws and Linux... follow the
-best practices and security frameworks") leva o modelo a usar `set -uo
-pipefail`, `flock` contra execuções concorrentes, `umask 077` e checagem de
-integridade do gzip — decisões de um script de produção, não um exemplo
-didático. **Task** detalha cada etapa pedida (pg_dump → gzip → `aws s3 cp` →
-retenção de 30 dias → log com timestamp → exit codes específicos e não
-genéricos) e todas aparecem implementadas 1:1 no script, inclusive os exit
-codes distintos por categoria de falha (10–32), exatamente como solicitado.
-**Format** ("bash script that will be run as a cron job") resultou em um
-script autônomo sem interação, pronto para agendamento, em vez de uma
-explicação em prosa.
+best practices and security frameworks") drives the model to use `set -uo
+pipefail`, `flock` against concurrent runs, `umask 077`, and a gzip
+integrity check — decisions of a production script, not a teaching example.
+**Task** details every requested step (pg_dump → gzip → `aws s3 cp` →
+30-day retention → timestamped logging → specific, non-generic exit codes),
+and all of them appear implemented 1:1 in the script, including the
+distinct exit codes per failure category (10–32), exactly as requested.
+**Format** ("bash script that will be run as a cron job") resulted in a
+self-contained, non-interactive script ready for scheduling, instead of a
+prose explanation.
 
