@@ -40,7 +40,7 @@ escolha será revisitada no Capítulo 4 (Criação e Versionamento de Prompts).
 | # | Framework | Provider | Modelo | Status |
 |---|---|---|---|---|
 | [01](questions/q01-docker-para-o-lift.md) | R-T-F | Anthropic | Claude Sonnet 5 | final |
-| [02](questions/q02-placeholder.md) | — | — | — | pendente |
+| [02](questions/q02-backup-script-of-ledger.md) | R-T-F | OpenAI | GPT 6.0 Luna | final |
 | [03](questions/q03-placeholder.md) | — | — | — | pendente |
 | [04](questions/q04-placeholder.md) | — | — | — | pendente |
 | [05](questions/q05-placeholder.md) | — | — | — | pendente |
