@@ -22,6 +22,8 @@ note on what would be done differently.
 ├── README.md                      this file — overview and index
 ├── context/
 │   └── hill-valley-tech.md        company and team scenario, referenced by every question
+├── docs/
+│   └── frameworks-cheatsheet.md   quick reference for the five frameworks (not graded)
 └── questions/
     ├── _template.md                template followed by every question
     ├── q01-*.md
