@@ -49,4 +49,4 @@ Versioning).
 | [05](questions/q05-legacy-deploy-modernization.md) | B-A-B | OpenAI | GPT 6 Luna | final |
 | [06](questions/q06-terraform-s3-module-internal-standard.md) | C-A-R-E | Anthropic | Claude Opus 5.5 | final |
 | [07](questions/q07-runbook-for-recurring-alert.md) | R-I-S-E | Anthropic | Claude Opus 5.5 | final |
-| [08](questions/q08-placeholder.md) | — (compared against 2 alternatives) | — | — | pending |
+| [08](questions/q08-technical-postmortem-production-incident.md) | R-I-S-E (compared with T-A-G, R-T-F, B-A-B) | Anthropic | Claude Opus 5.5 | final |
